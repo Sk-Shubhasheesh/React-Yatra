@@ -12,6 +12,8 @@
 // root.render(div)
 
 // sibling hierarchy
+import React from "react";
+import ReactDOM from "react-dom";
 const child1 = React.createElement('p', {}, "I am child 1 of div(text) element")
 const child2 = React.createElement('p', {}, "I am child 2 of div(text) element")
 const div = React.createElement('div', {className:'text'}, [child1, child2])
