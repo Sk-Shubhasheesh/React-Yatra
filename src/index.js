@@ -1,21 +1,11 @@
-// Create Single element
-
-// const div = React.createElement('div', {className:'text'}, "Hello from Shubhasheesh using React")
-// const root = ReactDOM.createRoot(document.getElementById('root'))
-// root.render(div)
-
-
-// Add childm tp parent
-// const child = React.createElement('p', {}, "I am child of div(text) element")
-// const div = React.createElement('div', {className:'text'}, child)
-// const root = ReactDOM.createRoot(document.getElementById('root'))
-// root.render(div)
-
-// sibling hierarchy
 import React from "react";
 import ReactDOM from "react-dom";
-const child1 = React.createElement('p', {}, "I am child 1 of div(text) element")
-const child2 = React.createElement('p', {}, "I am child 2 of div(text) element")
-const div = React.createElement('div', {className:'text'}, [child1, child2])
+
+//inject js inside the jsx - dynamiclly update element
+const apiData =  "heelo from api data"
+const isMorning = true
+
+// const div = <div className="text">Hello from JSX</div>
+const div = <div className="text">Hello Ji {apiData}</div>
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(div)
