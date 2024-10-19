@@ -1,10 +1,12 @@
+import React from "react";
+import Button from "./Button";
 const App = ()=>{
-    return "hello"
+    const HandleclickAction = ()=>{
+        console.log("I was clicked from parent");
+        
+    }
+    return <Button clickAction={HandleclickAction}>Click me</Button>
 }
 
+export default App;
 
-// default exports - you can have only one default exports
-  // export default App;
-
-// named exports
-export {App}
