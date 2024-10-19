@@ -1,14 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import Counter from "./counter";
 function App(){
-  const [message, updateMessage] = useState('Hello user, good morning')
-  const changeMessage = ()=>{
-    updateMessage('Hello user, good afternoon')
-  }
-  return <>
-    <div>{message}</div>
-    <button onClick={changeMessage}>Change Message</button>
-    </>
+  return(
+    <Counter />
+  )
+ 
 
 }
 export default App;
