@@ -37,4 +37,18 @@ function StudentList(){
     )
 }
 
-export {FruitList, StudentList}
+// Rendering Data from an Object Passed via Props
+function StudentInfo(props) {
+  const { name, age, course, year } = props.student; // Destructure the object from props
+
+  return (
+    <div>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+      <p>Course: {course}</p>
+      <p>Year: {year}</p>
+    </div>
+  );
+}
+
+export {FruitList, StudentList, StudentInfo}
