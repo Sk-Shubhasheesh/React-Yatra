@@ -1,25 +1,36 @@
-import React, { useRef } from 'react';
+import React,{ useState, useRef } from 'react';
 
 function App() {
-  // Create a ref using the useRef hook and set its initial value to null
-  const inputRef = useRef(null);
+  const [count, setCount] = useState(0);
+  const timerRef = useRef(null);
 
-  // Function to focus the input field when the button is clicked
-  const handleFocus = () => {
-    // Check if the ref has the current DOM node (input field) attached
-    if (inputRef.current) {
-      inputRef.current.focus(); // Focus the input element
+  const startTimer = () => {
+    if (!timerRef.current) {
+      timerRef.current = setInterval(() => {
+        setCount((prev) => prev + 1);
+      }, 1000);
     }
+  };
+
+  const stopTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = null;
   };
 
   return (
     <div>
-      {/* Attach the ref to the input element */}
-      <input ref={inputRef} type="text" placeholder="Click the button to focus me" />
-      <button onClick={handleFocus}>Focus Input</button>
+      <h1>{count}</h1>
+      <button onClick={startTimer}>Start Timer</button>
+      <button onClick={stopTimer}>Stop Timer</button>
     </div>
   );
 }
 
-
 export default App;
+
+
+/*
+timerRef is used to store the interval ID without causing re-renders.
+This allows you to keep track of the interval ID so you can clear it when needed without losing it between renders.
+
+*/
