@@ -1,29 +1,25 @@
-import React,{ useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
+import Chid from './use-callback';
 
-function App() {
-  const [count, setCount] = useState(0);
-  const timerRef = useRef(null);
 
-  const startTimer = () => {
-    if (!timerRef.current) {
-      timerRef.current = setInterval(() => {
-        setCount((prev) => prev + 1);
-      }, 1000);
-    }
-  };
+const App = () => {
+  const [count1, setCount1] = useState(0)
+  const [count2, setCount2] = useState(0)
 
-  const stopTimer = () => {
-    clearInterval(timerRef.current);
-    timerRef.current = null;
-  };
+  const memorizeSetCountOneFunc = useCallback(() => setCount1(count1 + 1), [count1])
 
+  const memorizeSetCountTwoFunc = useCallback(() => setCount2(count2 + 1), [count2])
   return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={startTimer}>Start Timer</button>
-      <button onClick={stopTimer}>Stop Timer</button>
-    </div>
-  );
+    <>
+      {count1} {count2}
+      {/* <Chid text={'Button One'} onClick={()=>setCount1(count1+1)}/>
+    <Chid text={'Button Two'} onClick={()=>setCount2(count2+1)}/> */}
+
+      <Chid text={'Button One'} onClick={memorizeSetCountOneFunc} />
+      <Chid text={'Button Two'} onClick={memorizeSetCountTwoFunc} />
+    </>
+  )
+
 }
 
 export default App;
